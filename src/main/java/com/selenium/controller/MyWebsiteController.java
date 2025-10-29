@@ -6,17 +6,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.selenium.dto.WebsitInfoDto;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
-
 @Controller
-//@ControllerAdvice
-
+@ControllerAdvice
 @SessionAttributes("webInfo")
 public class MyWebsiteController {
 
@@ -42,11 +37,6 @@ public class MyWebsiteController {
 
 		System.out.println(" Inside @RequestMapping showWebsiteInfo() method");
 
-		if (1 == 1) {
-
-			throw new IOException();
-		}
-
 		System.out.println(infoDto.getWebsieName());
 		System.out.println(infoDto.getWebsiteCategory());
 
@@ -65,4 +55,19 @@ public class MyWebsiteController {
 
 		return "index";
 	}
+	
+	
+	@RequestMapping("/exception")
+	public String handleException() throws Exception {
+
+		System.out.println(" Inside handleException() method");
+
+		// this always give true , so it will go exception.jsp 
+		if(1==1) {
+			throw new Exception();
+		}
+
+		return "index";
+	}
+	
 }

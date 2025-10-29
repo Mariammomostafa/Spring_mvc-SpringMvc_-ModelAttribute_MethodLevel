@@ -1,5 +1,8 @@
 package com.selenium.dto;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Server {
 	
 	private String serverIp;
